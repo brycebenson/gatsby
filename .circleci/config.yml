@@ -53,6 +53,7 @@ aliases:
   test_template: &test_template
     steps:
       - <<: *attach_to_bootstrap
+      - <<: *restore_cache
       - run: ./scripts/assert-changed-files.sh "packages/*|.circleci/*"
       - run: yarn jest -w 1 --ci
       - run: GATSBY_DB_NODES=loki yarn jest -w 1 --ci
