@@ -53,7 +53,7 @@ aliases:
   test_template: &test_template
     steps:
       - <<: *attach_to_bootstrap
-      - <<: *restore_cache
+      - <<: *install_node_modules
       - run: yarn list react
       - run: ./scripts/assert-changed-files.sh "packages/*|.circleci/*"
       - run: yarn jest -w 1 --ci
